@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CarKaraoke</string>
+    <string name="start_karaoke">开始K歌</string>
+    <string name="settings">设置</string>
+    <string name="karaoke_session_started">K歌 session 已开始</string>
+    <string name="permissions_granted">权限已授予</string>
+    <string name="permissions_denied">权限被拒绝</string>
+</resources>
