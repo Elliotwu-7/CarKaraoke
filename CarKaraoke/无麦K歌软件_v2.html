@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>无麦K歌 v1.0.8</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
+<script>
+  // 配置Tailwind主题
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          primary: '#3B82F6',
+          secondary: '#10B981',
+          accent: '#F59E0B',
+          danger: '#EF4444',
+        },
+      },
+    },
+  };
+</script>
+<style>
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .hide-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-runnable-track {
+      background: #E5E7EB;
+      height: 4px;
+      border-radius: 2px;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 16px;
+      width: 16px;
+      background: #3B82F6;
+      border-radius: 50%;
+      margin-top: -6px;
+      box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    }
+    
+    /* 深色模式下的滑块样式 */
+    .dark input[type="range"]::-webkit-slider-runnable-track {
+      background: #374151;
+    }
+    
+    .dark input[type="range"]::-webkit-slider-thumb {
+      background: #3B82F6;
+      box-shadow: 0 0 4px rgba(59, 130, 246, 0.3);
+    }
+    
+    /* 平滑过渡 */
+    * {
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 dark:bg-slate-900 flex items-center justify-center min-h-screen p-4">
+<!-- PC/Tablet Container (Landscape) -->
+<div class="w-[1024px] h-[768px] bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col border border-slate-200 dark:border-slate-700">
+<!-- Header / Status Bar Area -->
+<header class="h-24 px-10 flex items-end justify-between pb-4 bg-slate-50/50 dark:bg-slate-800/50">
+<div>
+<h1 class="text-3xl font-black text-slate-800 dark:text-white flex items-baseline gap-3">
+          无麦K歌 <span class="text-lg font-medium text-slate-500 dark:text-slate-400">v1.0.8</span>
+</h1>
+<p class="text-sm text-slate-400 dark:text-slate-500 mt-1">轻松K歌 · 2026年01月20日</p>
+</div>
+<div class="flex items-center gap-3 bg-green-50 dark:bg-green-900/20 px-4 py-2 rounded-full border border-green-100 dark:border-green-800/30">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-green-700 dark:text-green-400 font-medium text-sm">服务已就绪</span>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 p-10 grid grid-cols-2 gap-8 overflow-hidden">
+<!-- Left Column: Primary Controls & Effects -->
+<div class="space-y-8 flex flex-col">
+<!-- Master Control Card -->
+<section class="bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-2xl p-6 shadow-sm hover:border-blue-200 dark:hover:border-blue-500/30 transition-colors">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="text-xl font-bold text-slate-800 dark:text-white">主控开关</h2>
+<p class="text-slate-400 dark:text-slate-400 text-sm mt-1 leading-relaxed">唤醒车载音响系统，<br/>立即进入K歌模式</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-7 bg-slate-200 dark:bg-slate-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-blue-600"></div>
+</label>
+</div>
+</section>
+<!-- Sound Parameters Card -->
+<section class="bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-2xl p-6 shadow-sm flex-1 space-y-8">
+<h2 class="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
+<span class="iconify text-blue-500" data-icon="solar:tuning-square-bold"></span>
+            音效参数
+          </h2>
+<!-- Slider 1 -->
+<div class="space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-slate-600 dark:text-slate-300 font-medium">音效增幅</span>
+<span class="text-blue-600 dark:text-blue-400 font-bold">100%</span>
+</div>
+<input class="w-full" max="200" min="0" type="range" value="100"/>
+</div>
+<!-- Slider 2 -->
+<div class="space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-slate-600 dark:text-slate-300 font-medium">混响回声</span>
+<span class="text-blue-600 dark:text-blue-400 font-bold">0%</span>
+</div>
+<input class="w-full" max="100" min="0" type="range" value="0"/>
+</div>
+<!-- Slider 3 -->
+<div class="space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-slate-600 dark:text-slate-300 font-medium">信号延迟</span>
+<span class="text-blue-600 dark:text-blue-400 font-bold">0ms</span>
+</div>
+<input class="w-full" max="500" min="0" type="range" value="0"/>
+</div>
+</section>
+</div>
+<!-- Right Column: Settings & App Info -->
+<div class="space-y-8 flex flex-col">
+<!-- General Settings Card -->
+<section class="bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-2xl p-6 shadow-sm space-y-6">
+<h2 class="text-xl font-bold text-slate-800 dark:text-white">常规设置</h2>
+<div class="space-y-4">
+<!-- Setting Item 1 -->
+<div class="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-600/50 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-blue-500">
+<span class="iconify w-6 h-6" data-icon="solar:play-bold"></span>
+</div>
+<div>
+<div class="text-slate-800 dark:text-white font-semibold">自动运行</div>
+<div class="text-slate-400 dark:text-slate-400 text-xs text-nowrap">软件开启时自动开始K歌任务</div>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 dark:bg-slate-600 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+</label>
+</div>
+<!-- Setting Item 2 -->
+<div class="flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-600/50 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-orange-50 dark:bg-orange-900/30 flex items-center justify-center text-orange-500">
+<span class="iconify w-6 h-6" data-icon="solar:bell-off-bold"></span>
+</div>
+<div>
+<div class="text-slate-800 dark:text-white font-semibold">勿扰模式</div>
+<div class="text-slate-400 dark:text-slate-400 text-xs text-nowrap">关闭此应用的所有更新及版本提醒</div>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-slate-200 dark:bg-slate-600 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- About Software Card -->
+<section class="bg-blue-600 rounded-2xl p-8 text-white shadow-xl shadow-blue-200 flex-1 flex flex-col justify-between relative overflow-hidden group">
+<!-- Decorative Background Icon -->
+<div class="absolute -right-10 -bottom-10 opacity-10 group-hover:scale-110 transition-transform duration-700">
+<span class="iconify w-64 h-64 text-white" data-icon="solar:music-note-bold"></span>
+</div>
+<!-- 背景图片装饰 -->
+<div class="absolute inset-0 opacity-5">
+<img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=abstract%20musical%20notes%20pattern%20with%20blue%20gradient%20background&image_size=square_hd" alt="音乐背景" class="w-full h-full object-cover"/>
+</div>
+<div class="relative z-10">
+<h2 class="text-2xl font-black mb-4">关于软件</h2>
+<p class="text-blue-100 text-sm leading-relaxed opacity-90">
+              本应用由 <span class="font-bold underline decoration-blue-300">邪恶银渐层@小红书</span>,<br/>
+<span class="font-bold underline decoration-blue-300">先天BUG圣体@懂车帝</span> 联合制作
+            </p>
+</div>
+<button class="relative z-10 w-full mt-6 bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md py-4 rounded-xl font-bold tracking-widest text-sm transition-all active:scale-95 uppercase">
+            检查版本更新
+          </button>
+</section>
+</div>
+</main>
+</div>
+
+<script>
+  // 检测系统主题并设置相应的类
+  function detectSystemTheme() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
+  
+  // 初始化时检测一次
+  detectSystemTheme();
+  
+  // 监听系统主题变化
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', detectSystemTheme);
+  }
+  
+  // 滑块值更新
+  const sliders = document.querySelectorAll('input[type="range"]');
+  sliders.forEach((slider, index) => {
+    slider.addEventListener('input', function() {
+      const valueDisplay = this.previousElementSibling.querySelector('span:last-child');
+      if (index === 2) {
+        // 信号延迟显示ms
+        valueDisplay.textContent = this.value + 'ms';
+      } else {
+        // 其他显示百分比
+        valueDisplay.textContent = this.value + '%';
+      }
+    });
+  });
+</script>
+</body>
+</html>
